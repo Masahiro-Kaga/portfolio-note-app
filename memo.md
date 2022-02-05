@@ -60,5 +60,11 @@ Delete
 </Button>
 ```
 まずEditボタン押すと、まだ遷移先は作ってないけど、パラメータにidがついてページに飛ぶ。ボタン押してみたらわかる。
-deleteボタンについて、これまでonclick{fanction}で()付けてしまうと勝手に発動するようになってたが、アノニマスファンクションにすることで、引数を事前渡せるし、クリックした時に発動するようになっている。
+deleteボタンについて、これまでonclick{fanction}で()付けてしまうと勝手に発動するようになってたが、アノニマスファンクションにすることで、引数を事前渡せるし、クリックした時に発動するようになっている。  
+  
+## Warning!
+  
+Bootstrapのアコーディオンが刷新されたため、npmで古いreact-bootstrapに変更。
+bootstrapの変更点はURLの通り。
+https://engineering.linecorp.com/ja/blog/bootstrap5/#b2
 
