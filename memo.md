@@ -123,3 +123,5 @@ db.jsのconnectDBのuseCreateIndex、コンソールでエラー出てくる。�
 こちら参考URL。結局、全部入れなくていい的な内容。
 https://www.mongodb.com/community/forums/t/option-usecreateindex-is-not-supported/123048/3
 
+# ＃10
+
