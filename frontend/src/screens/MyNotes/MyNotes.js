@@ -1,27 +1,24 @@
-import React, { useEffect } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Accordion, Badge, Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import MainScreen from "../../components/MainScreen";
-import notes from "../../data/notes";
-import axios from "axios";
-
 
 const MyNotes = () => {
+  const [notes, setNotes] = useState([]);
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure?")) {
     }
   };
 
-  const fetchNotes = async() => {
-    console.log(123);
-    const data = await axios.get("http://localhost:4000/api/notes");
-    console.log(data);
-    
-  }
+  const fetchNotes = async () => {
+    const { data } = await axios.get("http://localhost:4000/api/notes");
+    setNotes(data);
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     fetchNotes();
-  },[])
+  }, []);
 
   return (
     <MainScreen title="Welcome Back Masahiro Kaga...">
@@ -30,8 +27,8 @@ const MyNotes = () => {
           Create New Note
         </Button>
       </Link>
-      {notes.map((note, index) => (
-        <Accordion key={index}>
+      {notes.map((note) => (
+        <Accordion key={note._id}>
           <Card style={{ margin: 10 }} key={note._id}>
             <Card.Header style={{ display: "flex" }}>
               <span
@@ -65,9 +62,7 @@ const MyNotes = () => {
                   <Badge variant="success">Category - {note.category}</Badge>
                 </h4>
                 <blockquote className="blockquote mb-0">
-                  <footer className="blockquote-footer">
-                    Created on
-                  </footer>
+                  <footer className="blockquote-footer">Created on</footer>
                 </blockquote>
               </Card.Body>
             </Accordion.Collapse>

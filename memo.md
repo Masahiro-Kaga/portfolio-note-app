@@ -91,5 +91,13 @@ const data=await axios.get("/api/notes");
 フロント側ではconst data = await axios.get("http://localhost:4000/api/notes");、
 サーバ側ではconst cors = require("cors");とapp.use(cors());置いて、対応。そしたらおっけ。
 
-さらに、コメント欄で「なぜビデオの始めにCORSインポートしてるのに結局つかわないんだ」って言われてる。
+さらに、コメント欄で「なぜビデオの始めにCORSインポートしてるのに結局つかわないんだ」って言われてる。  
+  
+### StrintmodeErrorを解消
 
+こんなエラーが出ていた。URLのとおり、bootstrapの新バージョンを使えばエラーが消えるということと、React.StringModeを削除したら消えると。後者を選択した。
+
+```
+findDOMNode is deprecated in StrictMode. findDOMNode was passed an instance of Transition which is inside StrictMode.
+```
+https://stackoverflow.com/questions/60903335/warning-finddomnode-is-deprecated-in-strictmode-finddomnode-was-passed-an-inst
