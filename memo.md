@@ -70,7 +70,7 @@ https://engineering.linecorp.com/ja/blog/bootstrap5/#b2
 
   
 
-# 8
+# ＃8
 
 ### proxyをfrontendのjsonファイルに追加。
 
@@ -100,4 +100,26 @@ const data=await axios.get("/api/notes");
 ```
 findDOMNode is deprecated in StrictMode. findDOMNode was passed an instance of Transition which is inside StrictMode.
 ```
-https://stackoverflow.com/questions/60903335/warning-finddomnode-is-deprecated-in-strictmode-finddomnode-was-passed-an-inst
+https://stackoverflow.com/questions/60903335/warning-finddomnode-is-deprecated-in-strictmode-finddomnode-was-passed-an-inst  
+
+
+### サーバーとクライアントを同時に立ち上げるすごい技  
+
+まず、concurrently というのをインポート。そして外側のjson（バックエンド側の）に、
+```
+"scripts": {
+"start": "node backend/server",
+"server": "nodemon backend/server",
+"client": "npm start --prefix frontend",
+"dev": "concurrently \"npm run server\" \"npm run client\""
+```
+こうやっていれる、そしてrun devすると、reactとサーバが一緒に立ち上がる、イェイ。
+https://qiita.com/takeo-asai/items/f1099b8bc5046da5e87b
+  
+
+# ＃9
+
+db.jsのconnectDBのuseCreateIndex、コンソールでエラー出てくる。もうサポートしてないって。
+こちら参考URL。結局、全部入れなくていい的な内容。
+https://www.mongodb.com/community/forums/t/option-usecreateindex-is-not-supported/123048/3
+
