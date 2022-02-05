@@ -16,7 +16,7 @@ return (
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="m-auto">
             {/* Word "inline error */}
-            <Form inline> 
+            <Form> 
               <FormControl
                 type="text"
                 placeholder="Search"
