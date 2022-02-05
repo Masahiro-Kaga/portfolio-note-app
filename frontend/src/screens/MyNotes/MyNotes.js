@@ -1,14 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Accordion, Badge, Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import MainScreen from "../../components/MainScreen";
 import notes from "../../data/notes";
+import axios from "axios";
 
 const MyNotes = () => {
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure?")) {
     }
   };
+
+  const fetchNotes = async() => {
+    const data=await axios.get("http://localhost:5000/api/notes");
+    console.log(data);
+    
+  }
+
+  useEffect(()=>{
+    fetchNotes();
+  },[])
+
   return (
     <MainScreen title="Welcome Back Masahiro Kaga...">
       <Link to="createnote">

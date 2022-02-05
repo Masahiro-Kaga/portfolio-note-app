@@ -13,10 +13,10 @@ app.get("/api/notes", (req, res) => {
   res.json(notes);
 });
 
-app.get("/api/notes/:idA/:idB", (req, res) => {
+app.get("/api/notes/:id", (req, res) => {
   console.log(req.params);
 });
 
 const PORT= process.env.PORT || 4000;
 
-app.listen(PORT, console.log(`Sercer started on ${PORT}`));
+app.listen(PORT, console.log(`Server started on ${PORT}`));
