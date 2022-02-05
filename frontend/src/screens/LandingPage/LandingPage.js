@@ -14,7 +14,7 @@ const LandingPage = () => {
             </div>
             <div className="buttonContainer">
                 <Button size="lg" className="landingbutton">Login</Button>
-                <Button size="lg" className="landingbutton">Login</Button>
+                <Button size="lg" className="landingbutton" variant="outline-primary">Login</Button>
             </div>
           </div>
         </Row>
