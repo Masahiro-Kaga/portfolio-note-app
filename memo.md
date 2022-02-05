@@ -44,4 +44,21 @@ aタグがあるよーっていう内容だと思う。
 https://stackoverflow.com/questions/54843302/reactjs-bootstrap-navbar-and-routing-not-working-together
 https://thewebdev.info/2021/11/15/how-to-add-links-to-a-react-router-route-with-react-bootstrap/
 
+  
+---
+
+### Edit & Delete buttonについて
+
+```
+<Button href={`/note/${note._id}`}>Edit</Button>
+<Button
+    variant="danger"
+    className="mx-2"
+    onClick={() => deleteHandler(note._id)}
+>
+Delete
+</Button>
+```
+まずEditボタン押すと、まだ遷移先は作ってないけど、パラメータにidがついてページに飛ぶ。ボタン押してみたらわかる。
+deleteボタンについて、これまでonclick{fanction}で()付けてしまうと勝手に発動するようになってたが、アノニマスファンクションにすることで、引数を事前渡せるし、クリックした時に発動するようになっている。
 
