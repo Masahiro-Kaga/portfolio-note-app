@@ -5,6 +5,7 @@ import MainScreen from "../../components/MainScreen";
 import notes from "../../data/notes";
 import axios from "axios";
 
+
 const MyNotes = () => {
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure?")) {
@@ -12,7 +13,8 @@ const MyNotes = () => {
   };
 
   const fetchNotes = async() => {
-    const data=await axios.get("http://localhost:5000/api/notes");
+    console.log(123);
+    const data = await axios.get("http://localhost:4000/api/notes");
     console.log(data);
     
   }

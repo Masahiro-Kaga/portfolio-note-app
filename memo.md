@@ -66,5 +66,30 @@ deleteボタンについて、これまでonclick{fanction}で()付けてしま�
   
 Bootstrapのアコーディオンが刷新されたため、npmで古いreact-bootstrapに変更。
 bootstrapの変更点はURLの通り。
-https://engineering.linecorp.com/ja/blog/bootstrap5/#b2
+https://engineering.linecorp.com/ja/blog/bootstrap5/#b2  
+
+  
+
+# 8
+
+### proxyをfrontendのjsonファイルに追加。
+
+```
+"proxy":"http://127.0.0.1:4000",
+```
+
+こうすることで、フロントからバックのホスト（今はローカルホスト）にアクセスする時に、このURLとポートでアクセスするという。これによって、
+
+const data=await axios.get("http://localhost:4000/api/notes");
+と書いていたものを、
+const data=await axios.get("/api/notes");
+で済むようになる。CORSエラーも出なくなる、ビデオでは。
+
+と思いきや！！！！！！エラーが出るので、  
+
+やはり、通常どおりjsonのproxy消して、
+フロント側ではconst data = await axios.get("http://localhost:4000/api/notes");、
+サーバ側ではconst cors = require("cors");とapp.use(cors());置いて、対応。そしたらおっけ。
+
+さらに、コメント欄で「なぜビデオの始めにCORSインポートしてるのに結局つかわないんだ」って言われてる。
 
