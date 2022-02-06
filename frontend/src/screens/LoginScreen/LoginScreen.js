@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import MainScreen from "../../components/MainScreen";
 import "./LoginScreen.css";
 import axios from "axios";
+import Loading from "../../components/Loading";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -36,6 +37,7 @@ const LoginScreen = () => {
   return (
     <MainScreen title="LOGIN">
       <div className="loginContainer">
+      {loading && <Loading />}
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
