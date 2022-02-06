@@ -157,3 +157,9 @@ notFound と　general errorだって。
 
 一点注意。postmanで一旦/api/usersでユーザ登録してトークンとかオーソライズとかされた情報のemailとパスワードである必要がある。じゃないと、401unauthorized（さっき設定したエラー）がコンソールログに出てくる。
 
+localstrageにuserinfoというものが入ってるので、確認してみよう。
+
+### { history }って入れた。結構大事っぽい。本人曰く、Routerの機能の一つを作るため、propsみたいにhistoryと入れるっぽい。
+###　　localstrageへの布石
+一旦LoginScreenjsに作ったのに、LandingPage.jsに持ってった。よくわからん。
+
