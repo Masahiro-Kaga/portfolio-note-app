@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
 import MainScreen from "../../components/MainScreen";
+import axios from "axios";
 
 const RegisterScreen = () => {
   const [email, setEmail] = useState("");
@@ -18,13 +19,41 @@ const RegisterScreen = () => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const submitHandler = async(e) => {
+    e.preventDefault();
+    if (password !== confirmpassword) {
+      setMessage("Passwords do not match");
+    } else {
+      setMessage(null);
+      try {
+        const config = {
+          headers: {
+            "Content-type": "application/json",
+          },
+        };
+        setLoading(true);
+        const { data } = await axios.post(
+          "http://localhost:4000/api/users",
+          { name, pic, email, password },
+          config
+        );
+        setLoading(false);
+        localStorage.setItem("userInfo", JSON.stringify(data));
+      } catch (error) {
+        setError(error.response.data.message);
+        setLoading(false);
+      }
+    }
+    // else dispatch(register(name, email, password, pic));
+  };
+
   return (
     <MainScreen title="REGISTER">
       <div className="loginContainer">
-        {/* {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+        {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
         {message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
-        {loading && <Loading />} */}
-        <Form>
+        {loading && <Loading />}
+        <Form onSubmit={submitHandler}>
           <Form.Group controlId="name">
             <Form.Label>Name</Form.Label>
             <Form.Control
