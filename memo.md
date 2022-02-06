@@ -131,3 +131,19 @@ express-async-handlerって何？
 つまりは、短いコードで、trycatchを内々に含みつつ、catchとか書かずに内々でエラーキャッチして次に渡してくれる,next(err)/catch(next)的な。キャッチ出ても先に進めてくれる。使ってるやつとつかってないコードの比較はURL。
 https://stackoverflow.com/questions/56973265/what-does-express-async-handler-do
 
+controllerにて
+```
+if (userExists) {
+res.status(400);
+throw new Error("User already exists.");
+}
+```
+このコードがあるおかげで、POSTを同じbodyで二回しようとしたら、二回目はエラー出てくる、もうユーザーいるよーって。  
+
+modelにて
+授業では、authっていうファイルを作ったりしてパスワードをencryptしてたけど、ここではmodelの中でスキーマ自体に組み込んでる。
+pre('save...' xxx)の意味は、コレクションとかの作業の時、saveする前に、xxxしろっていうことらしい。  
+  
+user.isModified('password')　これは、ハッシュ化されていないパスワードがある時にtrueを返す。
+https://qiita.com/Molly95554907/items/9f2f148d09470eb81f5a
+
