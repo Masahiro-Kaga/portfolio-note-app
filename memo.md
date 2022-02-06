@@ -178,3 +178,13 @@ setPic(data.url.toString());の上に、console.log(data);を置いてる。写�
 historyを入れるとバグる。なぜなら、useHistoryそんなもんないよって言ってくる。
 答えはここ。useHistoryをuseNavigationに置き換え、history.push()としていたところを、history()にする。
 https://github.com/remix-run/react-router/issues/7189
+
+# #11
+
+### まずはnpmで諸々インストール、store.js,そしてindex.jsにコード追加。
+その流れでchromeの拡張機能とnpm install redux-dev-toolsを同時にインストール。9：30
+composeWithDevTools(applyMiddleware(...middleware))のcodeでcomposeの部分は多分、通常は必要ないけどghromeの拡張機能にstate/store情報を表示させるために必要なんじゃないかと思う。このcomposeWithDevTools()がなくなれば、chrome右上の拡張機能アイコンも緑色にならないから、多分そうだと思う。
+
+
+
+
