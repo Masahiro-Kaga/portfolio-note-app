@@ -125,3 +125,9 @@ https://www.mongodb.com/community/forums/t/option-usecreateindex-is-not-supporte
 
 # ＃10
 
+POSTMANにenvironmentっていう項目があって、例えばhttp://localhost:4000/を変数として入れて、リクエストのURL項目で変数使って以降は省略できる。{{URL}}/api/users
+
+express-async-handlerって何？
+つまりは、短いコードで、trycatchを内々に含みつつ、catchとか書かずに内々でエラーキャッチして次に渡してくれる,next(err)/catch(next)的な。キャッチ出ても先に進めてくれる。使ってるやつとつかってないコードの比較はURL。
+https://stackoverflow.com/questions/56973265/what-does-express-async-handler-do
+
