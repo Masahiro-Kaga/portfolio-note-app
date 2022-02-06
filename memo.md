@@ -171,4 +171,10 @@ localstrageにuserinfoというものが入ってるので、確認してみよ�
 これでおっけ。クラウド名をdemoって部分に貼り付けたらいいんじゃないかと。
 https://cloudinary.com/documentation/image_upload_api_reference
 
-setPic(data.url.toString());の上に、console.log(data);を置いてる。写真を選択したら、コンソールにオブジェクトが出てきて、URLという項目をコピーしてブラウザに貼り付けたら、ちゃんとクラウドに入っていることが確認できる。
+setPic(data.url.toString());の上に、console.log(data);を置いてる。写真を選択したら、コンソールにオブジェクトが出てきて、URLという項目をコピーしてブラウザに貼り付けたら、ちゃんとクラウドに入っていることが確認できる。  
+
+
+### Logoutでバグ、てかreact-router-domのバージョン変わったから
+historyを入れるとバグる。なぜなら、useHistoryそんなもんないよって言ってくる。
+答えはここ。useHistoryをuseNavigationに置き換え、history.push()としていたところを、history()にする。
+https://github.com/remix-run/react-router/issues/7189
