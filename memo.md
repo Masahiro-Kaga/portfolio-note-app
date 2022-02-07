@@ -170,6 +170,7 @@ localstrageにuserinfoというものが入ってるので、確認してみよ�
 ビデオのとおりでいいけど、途中URLがどこにも見つからない。
 これでおっけ。クラウド名をdemoって部分に貼り付けたらいいんじゃないかと。
 https://cloudinary.com/documentation/image_upload_api_reference
+https://zenn.dev/horisan/articles/2aeaf0bd3fb70f
 
 setPic(data.url.toString());の上に、console.log(data);を置いてる。写真を選択したら、コンソールにオブジェクトが出てきて、URLという項目をコピーしてブラウザに貼り付けたら、ちゃんとクラウドに入っていることが確認できる。  
 
@@ -185,6 +186,11 @@ https://github.com/remix-run/react-router/issues/7189
 その流れでchromeの拡張機能とnpm install redux-dev-toolsを同時にインストール。9：30
 composeWithDevTools(applyMiddleware(...middleware))のcodeでcomposeの部分は多分、通常は必要ないけどghromeの拡張機能にstate/store情報を表示させるために必要なんじゃないかと思う。このcomposeWithDevTools()がなくなれば、chrome右上の拡張機能アイコンも緑色にならないから、多分そうだと思う。
 
+### chrome拡張機能が働いてる
+15:00段階でreducerがベースの形に仕上がって、storeにreducerを持ってくる。その状態で拡張機能みたら、もう初期値のstateが入ってることが確認できる。
 
+### Reduxのthunkがなぜあるのかっていう、ちょっと触りの部分。非同期通信のためだよー。15：50
+https://qiita.com/jima-r20/items/7fee2f00dbd1f302e373  
 
-
+### Bug!!  
+LoginScreenの引数{history}を削除。エラーでるし、これUndefined。結局、react-routerの仕様変更によって、この機能も使えなくなったっぽくて、ビデオ下のコメントに、ここで直にuseNavigation使って解決したわーっていうコメントあったから、自分もそうした。どこかでまたバグあるかもだけど、様子見。

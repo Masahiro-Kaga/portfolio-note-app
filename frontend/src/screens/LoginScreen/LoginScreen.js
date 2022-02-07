@@ -1,39 +1,37 @@
 import React, { useEffect, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { login } from "../../actions/userActions";
+import ErrorMessage from "../../components/ErrorMessage";
+import Loading from "../../components/Loading";
 import MainScreen from "../../components/MainScreen";
 import "./LoginScreen.css";
-import axios from "axios";
-import Loading from "../../components/Loading";
-import ErrorMessage from "../../components/ErrorMessage";
+import { useNavigate } from "react-router-dom";
 
-const LoginScreen = ({history}) => {
+const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState("");
+
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { loading, error, userInfo } = userLogin;
+
+  useEffect(() =>{
+    console.log(navigate);
+    if(userInfo){
+      navigate("/mynotes");
+    }
+  },[navigate,userInfo])
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    try {
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-        },
-      };
-      setLoading(true);
-      const { data } = await axios.post(
-        "http://localhost:4000/api/users/login",
-        { email, password },
-        config
-      );
-      console.log(data);
-      localStorage.setItem('userInfo',JSON.stringify(data));
-      setLoading(false);
-    } catch (error) {
-      setError(error.response.data.message)
-      setLoading(false);
-    }
+
+    dispatch(login(email,password));
+
   };
 
   return (
