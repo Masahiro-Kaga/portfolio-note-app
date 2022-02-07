@@ -194,3 +194,6 @@ https://qiita.com/jima-r20/items/7fee2f00dbd1f302e373
 
 ### Bug!!  
 LoginScreenの引数{history}を削除。エラーでるし、これUndefined。結局、react-routerの仕様変更によって、この機能も使えなくなったっぽくて、ビデオ下のコメントに、ここで直にuseNavigation使って解決したわーっていうコメントあったから、自分もそうした。どこかでまたバグあるかもだけど、様子見。
+
+### initialState設定忘れてたらしい、28：10
+
