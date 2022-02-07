@@ -7,15 +7,17 @@ import ErrorMessage from "../../components/ErrorMessage";
 import Loading from "../../components/Loading";
 import MainScreen from "../../components/MainScreen";
 
-
 const MyNotes = () => {
   const dispatch = useDispatch();
-  
-  const noteList = useSelector(state => state.noteList);
+
+  const noteList = useSelector((state) => state.noteList);
   const { loading, notes, error } = noteList;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+
+  const noteCreate = useSelector((state) => state.noteCreate);
+  const { success: successCreate } = noteCreate;
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure?")) {
@@ -26,21 +28,21 @@ const MyNotes = () => {
 
   useEffect(() => {
     dispatch(listNotes());
-    if(!userInfo){
-      navigate("/")
+    if (!userInfo) {
+      navigate("/");
     }
-  }, [dispatch]);
+  }, [navigate,dispatch,userInfo,successCreate]);
 
   return (
     <MainScreen title={`Welcome Back ${userInfo.name}`}>
-      <Link to="createnote">
+      <Link to="/createnote">
         <Button style={{ marginLeft: 10, marginBottom: 6 }} size="lg">
           Create New Note
         </Button>
       </Link>
       {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
       {loading && <Loading />}
-      {notes?.map((note) => (
+      {notes?.reverse().map((note) => (
         <Accordion key={note._id}>
           <Card style={{ margin: 10 }} key={note._id}>
             <Card.Header style={{ display: "flex" }}>
@@ -75,7 +77,12 @@ const MyNotes = () => {
                   <Badge variant="success">Category - {note.category}</Badge>
                 </h4>
                 <blockquote className="blockquote mb-0">
-                  <footer className="blockquote-footer">Created on</footer>
+                  <footer className="blockquote-footer">
+                    Created on{" "}
+                    <cite title="Source Title">
+                      {note.createdAt.substring(0, 10)}
+                    </cite>
+                  </footer>
                 </blockquote>
               </Card.Body>
             </Accordion.Collapse>
