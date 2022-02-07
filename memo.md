@@ -197,3 +197,4 @@ LoginScreenの引数{history}を削除。エラーでるし、これUndefined。
 
 ### initialState設定忘れてたらしい、28：10
 
+# #13  
