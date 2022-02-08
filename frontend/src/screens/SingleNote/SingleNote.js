@@ -22,15 +22,15 @@ function SingleNote() {
   const noteUpdate = useSelector((state) => state.noteUpdate);
   const { loading, error } = noteUpdate;
 
-  // const noteDelete = useSelector((state) => state.noteDelete);
-  // const { loading: loadingDelete, error: errorDelete } = noteDelete;
+  const noteDelete = useSelector((state) => state.noteDelete);
+  const { loading: loadingDelete, error: errorDelete } = noteDelete;
 
-  // const deleteHandler = (id) => {
-  //   if (window.confirm("Are you sure?")) {
-  //     dispatch(deleteNoteAction(id));
-  //   }
-  //   navigate("/mynotes");
-  // };
+  const deleteHandler = (id) => {
+    if (window.confirm("Are you sure?")) {
+      dispatch(deleteNoteAction(id));
+    }
+    navigate("/mynotes");
+  };
 
   useEffect(() => {
     const fetching = async () => {
@@ -67,11 +67,11 @@ function SingleNote() {
         <Card.Body>
 
           <Form onSubmit={updateHandler}>
-            {/* {loadingDelete && <Loading />} */}
+            {loadingDelete && <Loading />}
             {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
-            {/* {errorDelete && (
+            {errorDelete && (
               <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>
-            )} */}
+            )}
             <Form.Group controlId="title">
               <Form.Label>Title</Form.Label>
               <Form.Control
@@ -117,7 +117,7 @@ function SingleNote() {
             <Button
               className="mx-2"
               variant="danger"
-              // onClick={() => deleteHandler(match.params.id)}
+              onClick={() => deleteHandler(params.id)}
             >
               Delete Note
             </Button>

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Accordion, Badge, Button, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { listNotes } from "../../actions/notesActions";
+import { deleteNoteAction, listNotes } from "../../actions/notesActions";
 import ErrorMessage from "../../components/ErrorMessage";
 import Loading from "../../components/Loading";
 import MainScreen from "../../components/MainScreen";
@@ -22,8 +22,16 @@ const MyNotes = () => {
   const noteUpdate = useSelector((state) => state.noteUpdate);
   const { success: successUpdate } = noteUpdate;
 
+  const noteDelete = useSelector((state) => state.noteDelete);
+  const {
+    loading: loadingDelete,
+    error: errorDelete,
+    success: successDelete,
+  } = noteDelete;
+
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure?")) {
+      dispatch(deleteNoteAction(id));
     }
   };
 
@@ -34,7 +42,7 @@ const MyNotes = () => {
     if (!userInfo) {
       navigate("/");
     }
-  }, [navigate,dispatch,userInfo,successCreate,successUpdate]);
+  }, [navigate,dispatch,userInfo,successCreate,successUpdate,successDelete]);
 
   return (
     <MainScreen title={`Welcome Back ${userInfo.name}`}>
@@ -44,7 +52,11 @@ const MyNotes = () => {
         </Button>
       </Link>
       {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+      {errorDelete && (
+        <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>
+      )}
       {loading && <Loading />}
+      {loadingDelete && <Loading />}
       {notes?.reverse().map((note) => (
         <Accordion key={note._id}>
           <Card style={{ margin: 10 }} key={note._id}>
