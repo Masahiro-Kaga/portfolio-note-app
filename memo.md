@@ -208,3 +208,9 @@ https://blog.logrocket.com/react-router-v6-future-reach-router/#the-useparams-ho
 ### 意外と知らなかった、コンポーネントの作り方。
 42：10参照。return抜きでもコンポーネント作れる。ただそのreturnの前にuseStateとかfunctionとか入れない場合に限る。
 
+# #14
+
+### 微調整的な。
+ちょっと遅くなったけど、微調整。Header.jsで、ログインしている状態とそうでない状態でヘッダー右上の選択画面が変わるようにした。加えて、LandingPage.jsは、ログインしてたら、ランディングページに飛ばすのではなくて、mynotesにいくようにしたっつーこと。
+他、前半はプロファイルページの準備。
+
