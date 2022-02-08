@@ -204,3 +204,7 @@ LoginScreenの引数{history}を削除。エラーでるし、これUndefined。
 代わりにuseParamsを使いなさいと。使い方あってるかわからんけど、一応動いてる。
 https://blog.logrocket.com/react-router-v6-future-reach-router/#the-useparams-hook
 あと、同じくSingleNoteの上3つのusestateの初期値が、useState()になっててWarning: A component is changing an uncontrolled input to be controlled.っていうエラーがでてくる、（””）ちゃんと入れておく。
+
+### 意外と知らなかった、コンポーネントの作り方。
+42：10参照。return抜きでもコンポーネント作れる。ただそのreturnの前にuseStateとかfunctionとか入れない場合に限る。
+
