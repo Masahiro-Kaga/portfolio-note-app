@@ -30,7 +30,7 @@ export const listNotes = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`http://localhost:4000/api/notes`, config);
+    const { data } = await axios.get(`https://note-app-masamern.herokuapp.com/api/notes`, config);
 
     dispatch({
       type: NOTES_LIST_SUCCESS,
@@ -67,7 +67,7 @@ export const createNoteAction =
       };
 
       const { data } = await axios.post(
-        `http://localhost:4000/api/notes/create`,
+        `https://note-app-masamern.herokuapp.com/api/notes/create`,
         { title, content, category },
         config
       );
@@ -107,7 +107,7 @@ export const updateNoteAction =
       };
 
       const { data } = await axios.put(
-        `http://localhost:4000/api/notes/${id}`,
+        `https://note-app-masamern.herokuapp.com/api/notes/${id}`,
         { title, content, category },
         config
       );
@@ -144,7 +144,7 @@ export const deleteNoteAction = (id) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.delete(`http://localhost:4000/api/notes/${id}`, config);
+    const { data } = await axios.delete(`https://note-app-masamern.herokuapp.com/api/notes/${id}`, config);
 
     dispatch({
       type: NOTES_DELETE_SUCCESS,

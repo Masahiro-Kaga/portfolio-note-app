@@ -23,7 +23,7 @@ export const login = (email, password) => async (dispatch) => {
       };
   
       const { data } = await axios.post(
-        "http://localhost:4000/api/users/login",
+        "https://note-app-masamern.herokuapp.com/api/users/login",
         { email, password },
         config
       );
@@ -58,7 +58,7 @@ export const register = (name, email, password, pic) => async (dispatch) => {
       };
   
       const { data } = await axios.post(
-        "http://localhost:4000/api/users",
+        "https://note-app-masamern.herokuapp.com/api/users",
         { name, pic, email, password },
         config
       );
@@ -94,7 +94,7 @@ export const register = (name, email, password, pic) => async (dispatch) => {
         },
       };
   
-      const { data } = await axios.post("http://localhost:4000/api/users/profile", user, config);
+      const { data } = await axios.post("https://note-app-masamern.herokuapp.com/api/users/profile", user, config);
   
       dispatch({ type: USER_UPDATE_SUCCESS, payload: data });
   

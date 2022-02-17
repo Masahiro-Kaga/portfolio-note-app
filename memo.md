@@ -80,7 +80,7 @@ https://engineering.linecorp.com/ja/blog/bootstrap5/#b2
 
 こうすることで、フロントからバックのホスト（今はローカルホスト）にアクセスする時に、このURLとポートでアクセスするという。これによって、
 
-const data=await axios.get("http://localhost:4000/api/notes");
+const data=await axios.get("https://note-app-masamern.herokuapp.com/api/notes");
 と書いていたものを、
 const data=await axios.get("/api/notes");
 で済むようになる。CORSエラーも出なくなる、ビデオでは。
@@ -88,7 +88,7 @@ const data=await axios.get("/api/notes");
 と思いきや！！！！！！エラーが出るので、  
 
 やはり、通常どおりjsonのproxy消して、
-フロント側ではconst data = await axios.get("http://localhost:4000/api/notes");、
+フロント側ではconst data = await axios.get("https://note-app-masamern.herokuapp.com/api/notes");、
 サーバ側ではconst cors = require("cors");とapp.use(cors());置いて、対応。そしたらおっけ。
 
 さらに、コメント欄で「なぜビデオの始めにCORSインポートしてるのに結局つかわないんだ」って言われてる。  
@@ -125,7 +125,7 @@ https://www.mongodb.com/community/forums/t/option-usecreateindex-is-not-supporte
 
 # ＃10
 
-POSTMANにenvironmentっていう項目があって、例えばhttp://localhost:4000/を変数として入れて、リクエストのURL項目で変数使って以降は省略できる。{{URL}}/api/users
+POSTMANにenvironmentっていう項目があって、例えばhttps://note-app-masamern.herokuapp.com/を変数として入れて、リクエストのURL項目で変数使って以降は省略できる。{{URL}}/api/users
 
 express-async-handlerって何？
 つまりは、短いコードで、trycatchを内々に含みつつ、catchとか書かずに内々でエラーキャッチして次に渡してくれる,next(err)/catch(next)的な。キャッチ出ても先に進めてくれる。使ってるやつとつかってないコードの比較はURL。
