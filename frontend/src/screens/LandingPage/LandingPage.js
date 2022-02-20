@@ -19,6 +19,9 @@ const LandingPage = () => {
           <div className="intro-text">
             <div>
               <h1 className="title">Welcome to Note Zipper</h1>
+              <figure>
+                <img src="./mini.png" alt="somethinga" />
+              </figure>
               <p className="subtitle">One Safe place for all your notes.</p>
             </div>
             <div className="buttonContainer">
