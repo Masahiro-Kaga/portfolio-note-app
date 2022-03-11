@@ -18,15 +18,15 @@ const LandingPage = () => {
         <Row>
           <div className="intro-text">
             <div>
-              <h1 className="title">Welcome to Note Zipper</h1>
-              <figure>
+              <h1 className="title">Welcome to Daydream Diary</h1>
+              {/* <figure>
                 <img src="./mini.png" alt="somethinga" />
-              </figure>
+              </figure> */}
               <p className="subtitle">One Safe place for all your notes.</p>
             </div>
             <div className="buttonContainer">
               <Link to="/login">
-                <Button size="lg" className="landingbutton">
+                <Button size="lg"  style={{filter: "sepia(100%)"}}  className="landingbutton">
                   Login
                 </Button>
               </Link>
@@ -35,6 +35,7 @@ const LandingPage = () => {
                   variant="outline-primary"
                   size="lg"
                   className="landingbutton"
+                  style={{filter: "sepia(100%)"}} 
                 >
                   Signup
                 </Button>
