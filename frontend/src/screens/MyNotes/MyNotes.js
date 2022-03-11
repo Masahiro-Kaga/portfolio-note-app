@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Accordion, Badge, Button, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
 import { deleteNoteAction, listNotes } from "../../actions/notesActions";
 import ErrorMessage from "../../components/ErrorMessage";
 import Loading from "../../components/Loading";
@@ -104,6 +105,7 @@ const MyNotes = ({ search }) => {
                     <Badge variant="success">Category - {note.category}</Badge>
                   </h4>
                   <blockquote className="blockquote mb-0">
+                    <ReactMarkdown>{note.content}</ReactMarkdown>
                     <footer className="blockquote-footer">
                       Created on{" "}
                       <cite title="Source Title">
