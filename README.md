@@ -77,6 +77,7 @@ Portfolio - Diary web app
 - Applied saving photo function with "Cloudinary".
 - State management with Redux.
 - Run client and server with using "concurrently" module.
+- No need to change environment variables when we run this program because I have set appropriate cors option in server side.
 
 <br>
 
