@@ -21,9 +21,9 @@ Portfolio - Diary web app
 
 - MERN stack.
 - Redux to manage state.
+- Use axios for RestAPI.
 - Cloudinary to save photo.
 - Search function for bunch of saved diaries.
-- Fetch API.
 - React Bootstrap is used for styling.
 - Use Mongodb as database.
 - Set Registration and authentication system with web token.
